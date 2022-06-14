@@ -46,7 +46,7 @@ jobs:
       - name: release
         uses: marvinpinto/action-automatic-releases@latest
         with:
-          title: "Release #${{ steps.read_property.outputs.value }}"
+          title: "Release v${{ steps.read_property.outputs.value }}"
           automatic_release_tag: "${{ steps.read_property.outputs.value }}"
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           files: plugins/build/dist/*.jar
