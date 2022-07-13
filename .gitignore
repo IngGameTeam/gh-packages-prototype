@@ -10,3 +10,5 @@ hs_err_pid*
 
 */env.properties
 env.properties
+
+publich/gradle.properties
