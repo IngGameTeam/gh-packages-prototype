@@ -1,8 +1,8 @@
-if((JavaVersion.current() != JavaVersion.VERSION_17)) {
-    throw kotlin.NullPointerException("Java 17 is required")
-}
+//if((JavaVersion.current() != JavaVersion.VERSION_17)) {
+//    throw kotlin.NullPointerException("Java 17 is required")
+//}
 
-rootProject.name = "bukkt-plugin-example"
+rootProject.name = "gh-packages-prototype"
 
 val srcDir = "src"
 val buildDir = "build"
