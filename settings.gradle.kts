@@ -21,4 +21,4 @@ fun circuitDir(dir: File) {
 }
 circuitDir(File(rootDir, "modules"))
 circuitDir(File(rootDir, "plugins"))
-//circuitDir(File(rootDir, "publish"))
+circuitDir(File(rootDir, "publish"))
