@@ -2,16 +2,22 @@ plugins {
     id("maven-publish")
 }
 
-val OWNER = "IngGameTeam"
-val REPO = rootProject.name
 publishing {
     repositories {
         maven {
             name = "GitHubPackages"
+            val prop = org.jetbrains.kotlin.konan.properties.Properties()
+            val file = File(rootDir, "env.properties")
+            if (file.exists()) prop.load(file.inputStream())
+
+            val REPO = rootProject.name
+            val OWNER = prop["owner"]?.toString()?: System.getenv("OWNER")
+
             url = uri("https://maven.pkg.github.com/$OWNER/$REPO")
             credentials {
-                username = project.findProperty("gpr.user")?.toString() ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key")?.toString() ?: System.getenv("TOKEN")
+
+                username = prop["gpr.user"]?.toString()?: System.getenv("USERNAME")
+                password = prop["gpr.key"]?.toString()?: System.getenv("TOKEN")
             }
         }
     }
