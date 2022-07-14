@@ -4,6 +4,7 @@ on:
 env:
   USERNAME: '${{ secrets.GITHUB_ACTOR }}'
   TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+  OWNER: "${{ github.repository_owner }}"
 jobs:
   gradle:
     #    runs-on: self-hosted
@@ -14,8 +15,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - run: echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
-      - run: echo "%s" "$REPO_NAME"
       - name: Read value from Properties-file
         id: read_property
         uses: christian-draeger/read-properties@1.0.1
