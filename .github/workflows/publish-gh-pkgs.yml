@@ -1,6 +1,9 @@
 name: publish gh pkgs
 on:
   push:
+env:
+  USERNAME: '${{ secrets.GITHUB_ACTOR }}'
+  TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 jobs:
   gradle:
     #    runs-on: self-hosted
@@ -42,9 +45,6 @@ jobs:
         run: ./gradlew plugins:jar
       - name: publish
         run: ./gradlew publish:publish
-        with:
-          USERNAME: '${{ secrets.GITHUB_ACTOR }}'
-          TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
