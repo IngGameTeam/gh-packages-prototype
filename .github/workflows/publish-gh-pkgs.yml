@@ -1,4 +1,4 @@
-name: Gradle Build
+name: publish gh pkgs
 on:
   push:
 jobs:
@@ -29,6 +29,8 @@ jobs:
 
       - name: Execute Gradle build
         run: ./gradlew plugins:jar
+      - name: publish
+        run: ./gradlew publish:publish
 
       - name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
